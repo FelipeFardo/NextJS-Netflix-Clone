@@ -14,7 +14,7 @@ const FavoriteButton: React.FC<FavoritesButtonProps> = ({ movieId }) => {
   const { data: currentUser, mutate } = useCurrentUser();
 
   const isFavorite = useMemo(() => {
-    const list = currentUser?.favoritesIds || [];
+    const list = currentUser?.favoriteIds || [];
     return list.includes(movieId);
   }, [currentUser, movieId]);
 
