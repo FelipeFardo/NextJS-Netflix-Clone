@@ -1,9 +1,9 @@
 import useBillboard from "@/hooks/useBillBoard";
 import React from "react";
 
-import {AiOutlineInfoCircle } from 'react-icons/ai'
+import { AiOutlineInfoCircle } from 'react-icons/ai'
 const Billboard = () => {
-  const {data} = useBillboard();
+  const { data } = useBillboard();
 
 
   return (
@@ -18,7 +18,7 @@ const Billboard = () => {
         autoPlay
         muted
         loop
-        poster={data?.thumbnailUrl} 
+        poster={data?.thumbnailUrl}
         src={data?.videoUrl}>
       </video>
       <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
@@ -62,11 +62,11 @@ const Billboard = () => {
           hover:bg-opacity-20
           transition
           ">
-            <AiOutlineInfoCircle className="mr-1"/>
+            <AiOutlineInfoCircle className="mr-1" />
             More Info
           </button>
         </div>
-        </div>
+      </div>
     </div>
   )
 }

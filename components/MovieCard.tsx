@@ -1,15 +1,16 @@
 import React from "react"
 import { BsFillPlayFill } from "react-icons/bs";
+import FavoriteButton from "./FavoriteButton";
 
 interface MovieCardProps {
   data: Record<string, any>;
 }
 
-const MovieCard: React.FC<MovieCardProps>= ({data}) => {
+const MovieCard: React.FC<MovieCardProps> = ({ data }) => {
   return (
     <div className="group bg-zinc-900 col-span relative h-[12vw]">
-      <img 
-      className="
+      <img
+        className="
         cursor-pointer
         object-cover
         transition
@@ -22,7 +23,7 @@ const MovieCard: React.FC<MovieCardProps>= ({data}) => {
         w-full
         h-[12vw]
       "
-      src={data.thumbnailUrl} alt="Thumnail" />
+        src={data.thumbnailUrl} alt="Thumnail" />
       <div className="
         opacity-0
         absolute
@@ -40,8 +41,8 @@ const MovieCard: React.FC<MovieCardProps>= ({data}) => {
         group-hover:translate-x-[2vw]
         group-hover:opacity-100
       ">
-        <img 
-        className="
+        <img
+          className="
           cursor-pointer
           object-cover
           transition
@@ -51,7 +52,7 @@ const MovieCard: React.FC<MovieCardProps>= ({data}) => {
           w-full
           h-[12vw]
         "
-        src={data.thumbnailUrl} alt="Thumbnail" />
+          src={data.thumbnailUrl} alt="Thumbnail" />
         <div className="
           z-10
         bg-zinc-800
@@ -64,27 +65,28 @@ const MovieCard: React.FC<MovieCardProps>= ({data}) => {
           rounded-b-md
         ">
           <div className="flex flex-row items-center gap-3">
-            <div 
-            className="
-            cursor-pointer
-            w-6
-            h-6
-            lg:w-10
-            lg:h-10
-            bg-white
-            rounded-full
-            flex
-            justify-center
-            items-center
-            transition
-            hover:bg-neutral-300
+            <div
+              className="
+              cursor-pointer
+              w-6
+              h-6
+              lg:w-10
+              lg:h-10
+              bg-white
+              rounded-full
+              flex
+              justify-center
+              items-center
+              transition
+              hover:bg-neutral-300
             "
-            onClick={()=>{}}>
-            <BsFillPlayFill size={30}/>
+              onClick={() => { }}>
+              <BsFillPlayFill size={30} />
             </div>
+            <FavoriteButton movieId={data?.id} />
           </div>
           <p className="text-green-400 font-semibold mt-4">
-          New <span className="text-white">2023</span>
+            New <span className="text-white">2023</span>
           </p>
           <div className="flex flex-row mt-4 gap-2 items-center">
             <p className="text-white text-[10px] lg:text-sm">{data.duration}</p>
