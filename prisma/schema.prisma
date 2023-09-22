@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
 }
 
 datasource db {
@@ -18,10 +19,10 @@ model User {
   emailVerified  DateTime?
   hashedPassword String?
   createdAt      DateTime  @default(now())
-  upateedAt      DateTime  @updatedAt
-  favoriteIds    String[]  @db.ObjectId
+  updatedAt      DateTime  @updatedAt
   sessions       Session[]
   accounts       Account[]
+  favoriteIds    String[]  @db.ObjectId
 }
 
 model Account {
@@ -37,7 +38,8 @@ model Account {
   scope             String?
   id_token          String? @db.String
   session_state     String?
-  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -47,8 +49,7 @@ model Session {
   sessionToken String   @unique
   userId       String   @db.ObjectId
   expires      DateTime
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
