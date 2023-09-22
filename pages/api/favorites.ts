@@ -1,10 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import prismadb from '@/lib/prismadb';
-import serverAuth from "@/lib/serverAuth";
+import prismadb from "@/libs/prismadb";
+import serverAuth from "@/libs/serverAuth";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method !== 'GET') {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  if (req.method !== "GET") {
     return res.status(405).end();
   }
 
@@ -14,10 +17,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const favoritesMovies = await prismadb.movie.findMany({
       where: {
         id: {
-          in: currentUser?.favoriteIds
-        }
-      }
-    })
+          in: currentUser?.favoriteIds,
+        },
+      },
+    });
 
     return res.status(200).json(favoritesMovies);
   } catch (error) {
