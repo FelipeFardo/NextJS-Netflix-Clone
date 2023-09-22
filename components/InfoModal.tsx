@@ -104,9 +104,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                 items-center
                 justify-center
               '
-              onClick={() => {
-
-              }}>
+              onClick={handleClose}>
               <AiOutlineClose
                 className='
                   text-white
