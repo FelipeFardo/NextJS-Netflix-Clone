@@ -14,13 +14,14 @@ export default async function handler(
   try {
     const { currentUser } = await serverAuth(req, res);
 
-    const favoritesMovies = await prismadb.movie.findMany({
-      where: {
-        id: {
-          in: currentUser?.favoriteIds,
+    const favoritesMovies = await prismadb.movie.
+      findMany({
+        where: {
+          id: {
+            in: currentUser?.favoriteIds,
+          },
         },
-      },
-    });
+      });
 
     return res.status(200).json(favoritesMovies);
   } catch (error) {
